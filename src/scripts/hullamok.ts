@@ -2,13 +2,15 @@ export class Hullam {
     public amplitudo: number;
     public frekvencia: number;
     public hullamhossz: number;
-    public forras;
+    public x: number;
+    public y: number;
 
     public constructor(amplitudo: number, frekvencia: number, hullamhossz: number, x: number, y: number) {
         this.amplitudo = amplitudo;
         this.frekvencia = frekvencia;
         this.hullamhossz = hullamhossz;
-        this.forras = new Map([["x", x], ["y", y]]);
+        this.x = x;
+        this.y = y;
     }
 
     public magassag(elmozdulas: number, ido: number) {
