@@ -3,13 +3,14 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
+import dictionary from "../scripts/dictionary";
 
 export default function AttributePanel(
-    { amplitude, setAmplitude, frequency, setFrequency, wavelength, setWavelength, distance, setDistance }:
-    {amplitude: number, setAmplitude: (n: number) => void, frequency: number, setFrequency: (n: number) => void, wavelength: number, setWavelength: (n: number) => void, distance: number, setDistance: (n: number) => void}) {
+    { amplitude, setAmplitude, frequency, setFrequency, wavelength, setWavelength, distance, setDistance, lang }:
+    {amplitude: number, setAmplitude: (n: number) => void, frequency: number, setFrequency: (n: number) => void, wavelength: number, setWavelength: (n: number) => void, distance: number, setDistance: (n: number) => void, lang: "en" | "hu"}) {
     return (
         <div className={"flex gap-2 flex-col w-xs"}>
-            <Typography id={"amplitude-label"}>Amplitúdó</Typography>
+            <Typography id={"amplitude-label"}>{dictionary.get(lang)?.get("amplitude")}</Typography>
             <div className={"flex flex-row gap-3"}>
                 <Slider
                     onChange={(_, value) => setAmplitude(value as number)}
@@ -32,7 +33,7 @@ export default function AttributePanel(
                     }}
                 />
             </div>
-            <Typography id={"frequency-label"}>Frekvencia</Typography>
+            <Typography id={"frequency-label"}>{dictionary.get(lang)?.get("frequency")}</Typography>
             <div className={"flex flex-row gap-3"}>
                 <Slider
                     onChange={(_, value) => setFrequency(value as number)}
@@ -55,7 +56,7 @@ export default function AttributePanel(
                     }}
                 />
             </div>
-            <Typography id={"wavelength-label"}>Hullámhossz</Typography>
+            <Typography id={"wavelength-label"}>{dictionary.get(lang)?.get("wavelength")}</Typography>
             <div className={"flex flex-row gap-3"}>
                 <Slider
                     onChange={(_, value) => setWavelength(value as number)}
@@ -79,7 +80,7 @@ export default function AttributePanel(
                 />
             </div>
             <Divider />
-            <Typography id={"distance-label"}>Távolság</Typography>
+            <Typography id={"distance-label"}>{dictionary.get(lang)?.get("distance")}</Typography>
             <div className={"flex flex-row gap-3"}>
                 <Slider
                     onChange={(_, value) => setDistance(value as number)}
