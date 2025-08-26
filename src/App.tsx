@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Szimulacio from "./components/Szimulacio.tsx";
-import TulajdonsagPanel from "./components/TulajdonsagPanel.tsx";
+import Simulation from "./components/Simulation.tsx";
+import AttributePanel from "./components/AttributePanel.tsx";
 
 const canvasWidth = 100;
 const canvasHeight = canvasWidth;
@@ -14,32 +14,32 @@ const theme = createTheme({
 });
 
 function App() {
-    const [amplitudo, setAmplitudo] = useState(0.5);
-    const [frekvencia, setFrekvencia] = useState(2.5);
-    const [hullamhossz, setHullamhossz] = useState(0.06);
-    const [tavolsag, setTavolsag] = useState(0.5);
+    const [amplitude, setAmplitude] = useState(0.5);
+    const [frequency, setFrequency] = useState(2.5);
+    const [wavelength, setWavelength] = useState(0.06);
+    const [distance, setDistance] = useState(0.5);
 
     return (
         <ThemeProvider theme={theme}>
             <div className="flex items-center justify-center w-screen h-screen gap-5 flex-col md:flex-row">
-                <Szimulacio
+                <Simulation
                     canvasWidth={canvasWidth}
                     canvasHeight={canvasHeight}
                     ppm={ppm}
-                    amplitudo={amplitudo}
-                    frekvencia={frekvencia}
-                    hullamhossz={hullamhossz}
-                    tavolsag={tavolsag}
+                    amplitude={amplitude}
+                    frequency={frequency}
+                    wavelength={wavelength}
+                    distance={distance}
                 />
-                <TulajdonsagPanel
-                    amplitudo={amplitudo}
-                    setAmplitudo={setAmplitudo}
-                    frekvencia={frekvencia}
-                    setFrekvencia={setFrekvencia}
-                    hullamhossz={hullamhossz}
-                    setHullamhossz={setHullamhossz}
-                    tavolsag={tavolsag}
-                    setTavolsag={setTavolsag}
+                <AttributePanel
+                    amplitude={amplitude}
+                    setAmplitude={setAmplitude}
+                    frequency={frequency}
+                    setFrequency={setFrequency}
+                    wavelength={wavelength}
+                    setWavelength={setWavelength}
+                    distance={distance}
+                    setDistance={setDistance}
                 />
             </div>
         </ThemeProvider>

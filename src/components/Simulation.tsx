@@ -1,39 +1,39 @@
-import { Hullam, magassag2 } from "../scripts/hullamok.ts";
+import { Wave, height2 } from "../scripts/waves.ts";
 import { useRef } from "react";
 
-type SzimulacioProps = {
+type SimulationProps = {
     canvasWidth: number;
     canvasHeight: number;
     ppm: number;
-    amplitudo: number;
-    frekvencia: number;
-    hullamhossz: number;
-    tavolsag: number;
+    amplitude: number;
+    frequency: number;
+    wavelength: number;
+    distance: number;
 }
 
-export default function Szimulacio({ canvasWidth, canvasHeight, ppm, amplitudo, frekvencia, hullamhossz, tavolsag }: SzimulacioProps) {
+export default function Simulation({ canvasWidth, canvasHeight, ppm, amplitude, frequency, wavelength, distance }: SimulationProps) {
     const startTimestamp = Date.now();
     const animationRef = useRef(0);
     const canvasRef = useRef(null);
 
-    const hullam1 = new Hullam(amplitudo, frekvencia, hullamhossz, canvasWidth / 2 - tavolsag * 50, canvasHeight / 2);
-    const hullam2 = new Hullam(amplitudo, frekvencia, hullamhossz, canvasWidth / 2 + tavolsag * 50, canvasHeight / 2);
+    const wave1 = new Wave(amplitude, frequency, wavelength, canvasWidth / 2 - distance * 50, canvasHeight / 2);
+    const wave2 = new Wave(amplitude, frequency, wavelength, canvasWidth / 2 + distance * 50, canvasHeight / 2);
 
     function Render() {
         if (canvasRef.current == null) return 0;
 
-        if (hullam1 == undefined) return 0;
+        if (wave1 == undefined) return 0;
 
         const frameTimestamp = Date.now() - startTimestamp;
 
         for (let i = 0; i < canvasWidth; i++) {
             for (let j = 0; j < canvasHeight; j++) {
-                const tavolsag1 = Math.sqrt((i - hullam1.x) ** 2 + (j - hullam1.y) ** 2) / ppm;
-                const tavolsag2 = Math.sqrt((i - hullam2.x) ** 2 + (j - hullam2.y) ** 2) / ppm;
-                const magassag = magassag2(hullam1, hullam2, tavolsag1, tavolsag2,  frameTimestamp / 1000);
+                const distance1 = Math.sqrt((i - wave1.x) ** 2 + (j - wave1.y) ** 2) / ppm;
+                const distance2 = Math.sqrt((i - wave2.x) ** 2 + (j - wave2.y) ** 2) / ppm;
+                const height = height2(wave1, wave2, distance1, distance2,  frameTimestamp / 1000);
                 let color;
-                if (magassag == null) color = 0;
-                else color = (magassag / 2 + amplitudo) / 2 * 255;
+                if (height == null) color = 0;
+                else color = (height / 2 + amplitude) / 2 * 255;
                 const canvas = canvasRef.current as HTMLCanvasElement;
                 const ctx = canvas.getContext("2d");
                 if (ctx == null) return 0;

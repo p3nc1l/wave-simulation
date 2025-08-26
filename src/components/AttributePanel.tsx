@@ -4,26 +4,26 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 
-export default function TulajdonsagPanel(
-    { amplitudo, setAmplitudo, frekvencia, setFrekvencia, hullamhossz, setHullamhossz, tavolsag, setTavolsag }:
-    {amplitudo: number, setAmplitudo: (n: number) => void, frekvencia: number, setFrekvencia: (n: number) => void, hullamhossz: number, setHullamhossz: (n: number) => void, tavolsag: number, setTavolsag: (n: number) => void}) {
+export default function AttributePanel(
+    { amplitude, setAmplitude, frequency, setFrequency, wavelength, setWavelength, distance, setDistance }:
+    {amplitude: number, setAmplitude: (n: number) => void, frequency: number, setFrequency: (n: number) => void, wavelength: number, setWavelength: (n: number) => void, distance: number, setDistance: (n: number) => void}) {
     return (
         <div className={"flex gap-2 flex-col w-xs"}>
-            <Typography id={"amplitudo-label"}>Amplitúdó</Typography>
+            <Typography id={"amplitude-label"}>Amplitúdó</Typography>
             <div className={"flex flex-row gap-3"}>
                 <Slider
-                    onChange={(_, value) => setAmplitudo(value as number)}
-                    value={amplitudo}
+                    onChange={(_, value) => setAmplitude(value as number)}
+                    value={amplitude}
                     min={0}
                     max={1}
                     step={0.1}
-                    aria-labelledby="amplitudo-label"
+                    aria-labelledby="amplitude-label"
                 />
                 <TextField
                     disabled
                     className={"w-15"}
                     variant={"standard"}
-                    value={amplitudo}
+                    value={amplitude}
 
                     slotProps={{
                         input: {
@@ -32,21 +32,21 @@ export default function TulajdonsagPanel(
                     }}
                 />
             </div>
-            <Typography id={"frekvencia-label"}>Frekvencia</Typography>
+            <Typography id={"frequency-label"}>Frekvencia</Typography>
             <div className={"flex flex-row gap-3"}>
                 <Slider
-                    onChange={(_, value) => setFrekvencia(value as number)}
-                    value={frekvencia}
+                    onChange={(_, value) => setFrequency(value as number)}
+                    value={frequency}
                     min={0.5}
                     max={5}
                     step={0.5}
-                    aria-labelledby={"frekvencia-label"}
+                    aria-labelledby={"frequency-label"}
                 />
                 <TextField
                     disabled
                     className={"w-16"}
                     variant={"standard"}
-                    value={frekvencia}
+                    value={frequency}
 
                     slotProps={{
                         input: {
@@ -55,21 +55,21 @@ export default function TulajdonsagPanel(
                     }}
                 />
             </div>
-            <Typography id={"hullamhossz-label"}>Hullámhossz</Typography>
+            <Typography id={"wavelength-label"}>Hullámhossz</Typography>
             <div className={"flex flex-row gap-3"}>
                 <Slider
-                    onChange={(_, value) => setHullamhossz(value as number)}
-                    value={hullamhossz}
+                    onChange={(_, value) => setWavelength(value as number)}
+                    value={wavelength}
                     min={0.03}
                     max={0.13}
                     step={0.01}
-                    aria-labelledby={"hullamhossz-label"}
+                    aria-labelledby={"wavelength-label"}
                 />
                 <TextField
                     disabled
                     className={"w-18"}
                     variant={"standard"}
-                    value={hullamhossz}
+                    value={wavelength}
 
                     slotProps={{
                         input: {
@@ -79,21 +79,21 @@ export default function TulajdonsagPanel(
                 />
             </div>
             <Divider />
-            <Typography id={"tavolsag-label"}>Távolság</Typography>
+            <Typography id={"distance-label"}>Távolság</Typography>
             <div className={"flex flex-row gap-3"}>
                 <Slider
-                    onChange={(_, value) => setTavolsag(value as number)}
-                    value={tavolsag}
+                    onChange={(_, value) => setDistance(value as number)}
+                    value={distance}
                     min={0}
                     max={1}
                     step={0.1}
-                    aria-labelledby={"tavolsag-label"}
+                    aria-labelledby={"distance-label"}
                 />
                 <TextField
                     disabled
                     className={"w-15"}
                     variant={"standard"}
-                    value={tavolsag}
+                    value={distance}
 
                     slotProps={{
                         input: {
